@@ -7,7 +7,7 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "nitpick"
-    gem.summary = %Q{TODO}
+    gem.summary = %Q{A link-like static code analyzer for Ruby}
     gem.email = "kevin.clark@gmail.com"
     gem.homepage = "http://github.com/kevinclark/nitpick"
     gem.authors = ["Kevin Clark"]
