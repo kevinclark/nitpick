@@ -1,4 +1,4 @@
-module Dust
+module Nitpick
   module Warnings
     class IdenticalBranch < SimpleWarning
       attr_reader :yes_branch, :no_branch

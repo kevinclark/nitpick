@@ -1,5 +1,5 @@
-module Dust
-  class MethodDuster < Duster
+module Nitpick
+  class MethodNitpicker < Nitpicker
     def process_defn(exp)
       # def foo(x); 1 end =>
       #   [:defn, :foo, [:scope, [:block, [:args, :x], [:lit, 1]]]]

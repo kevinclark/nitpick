@@ -3,21 +3,21 @@ require 'pp'
 
 require 'rubygems'
 $:.unshift File.join(File.dirname(__FILE__), *%w[.. lib])
-require 'dust'
+require 'nitpick'
 
 # {Constant => {Method => [Warnings]}}
 $warnings = Hash.new {|h,k| h[k] = Hash.new {|_h,_k| _h[_k] = [] }}
 
 require 'trollop'
 opts = Trollop::options do
-  opt :only, "Dust only classes/modules that match this string.", :type => :string, :multi => true
-  opt :except, "Don't dust classes/modules that match this string.", :type => :string, :multi => true
+  opt :only, "Nitpick only classes/modules that match this string.", :type => :string, :multi => true
+  opt :except, "Don't nitpick classes/modules that match this string.", :type => :string, :multi => true
 end
 
-DustOptions = { :only => opts[:only] || [], :except => opts[:except] || []}
-Dusters = [
-  Dust::ArgumentDuster, Dust::BlockDuster, Dust::BranchDuster,
-  Dust::LocalVariableDuster, Dust::MethodDuster, Dust::RescueDuster
+NitpickOptions = { :only => opts[:only] || [], :except => opts[:except] || []}
+Nitpickers = [
+  Nitpick::ArgumentNitpicker, Nitpick::BlockNitpicker, Nitpick::BranchNitpicker,
+  Nitpick::LocalVariableNitpicker, Nitpick::MethodNitpicker, Nitpick::RescueNitpicker
 ]
 
 class Module
@@ -27,13 +27,13 @@ class Module
   def method_added(name)
     original_method_added(name)
     
-    return if DustOptions[:except].any? {|namespace| /#{namespace}/ =~ self.to_s }
-    return unless DustOptions[:only].empty? or DustOptions[:only].any? {|namespace|  /#{namespace}/ =~ self.to_s }
+    return if NitpickOptions[:except].any? {|namespace| /#{namespace}/ =~ self.to_s }
+    return unless NitpickOptions[:only].empty? or NitpickOptions[:only].any? {|namespace|  /#{namespace}/ =~ self.to_s }
     
-    warnings = Dusters.map do |duster_class|
-      duster = duster_class.new(self, name)
-      duster.dust!
-      duster.warnings
+    warnings = Nitpickers.map do |nitpicker_class|
+      nitpicker = nitpicker_class.new(self, name)
+      nitpicker.nitpick!
+      nitpicker.warnings
     end.flatten
     
     $warnings[self.name][name.to_s] = warnings
@@ -73,6 +73,6 @@ ARGV.each do |file|
   begin
     load file
   rescue Exception => e # grab *everything*
-    $stderr.puts "*** Dust had trouble loading #{file.inspect}:\n\t#{e.class} #{e.message}"
+    $stderr.puts "*** Nitpick had trouble loading #{file.inspect}:\n\t#{e.class} #{e.message}"
   end
 end

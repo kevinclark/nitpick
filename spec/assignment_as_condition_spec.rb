@@ -3,7 +3,7 @@ require 'fixtures/branch_badness'
 
 include Fixtures
 
-describe Dust::Warnings::AssignmentAsCondition do
+describe Nitpick::Warnings::AssignmentAsCondition do
   it "should match against an assignment" do
     # TODO(kevinclark): 
     #   This should really include :dasgn, :cvasgn, and :op_asgn2,
@@ -20,7 +20,7 @@ describe Dust::Warnings::AssignmentAsCondition do
     }
         
     matches.each do |_, assignment|
-      warning = Dust::Warnings::AssignmentAsCondition.new(assignment)
+      warning = Nitpick::Warnings::AssignmentAsCondition.new(assignment)
       warning.matches?.should be_true
     end
   end
@@ -34,7 +34,7 @@ describe Dust::Warnings::AssignmentAsCondition do
     }
     
     non_matches.each do |_, condition|
-      warning = Dust::Warnings::AssignmentAsCondition.new(condition)
+      warning = Nitpick::Warnings::AssignmentAsCondition.new(condition)
       warning.matches?.should be_false
     end
   end

@@ -1,5 +1,5 @@
-module Dust
-  class BlockDuster < Duster
+module Nitpick
+  class BlockNitpicker < Nitpicker
     def process_if(exp)
       cond = Sexp.from_array(exp.shift)
       yes_branch = Sexp.from_array(exp.shift)

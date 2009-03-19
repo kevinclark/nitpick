@@ -1,4 +1,4 @@
-module Dust
+module Nitpick
   module Warnings
     class AssignmentAsCondition < SimpleWarning
       ASSIGNMENT_NODES = [:lasgn, :op_asgn_or, :op_asgn_and, :iasgn,

@@ -1,4 +1,4 @@
-module Dust
+module Nitpick
   module Warnings
     class UnusedVariable < SimpleWarning
       attr_reader :variable

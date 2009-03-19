@@ -1,6 +1,6 @@
 require 'set'
 
-module Dust
+module Nitpick
   module Warnings
     class ShadowedVariable < SimpleWarning
       attr_reader :vars

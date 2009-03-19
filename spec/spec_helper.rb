@@ -1,4 +1,4 @@
-require File.join(File.dirname(__FILE__), *%w[.. lib dust])
+require File.join(File.dirname(__FILE__), *%w[.. lib nitpick])
 $:.unshift File.dirname(__FILE__)
 
 require 'spec'

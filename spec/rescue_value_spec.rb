@@ -3,15 +3,15 @@ require 'fixtures/rescue_badness'
 
 include Fixtures
 
-describe Dust::Warnings::RescueValue do
+describe Nitpick::Warnings::RescueValue do
 
   it "should match rescuing to a nil" do
-    warning = Dust::Warnings::RescueValue.new(nil, [:nil])
+    warning = Nitpick::Warnings::RescueValue.new(nil, [:nil])
     warning.matches?.should be_true
   end
   
   it "should match rescuing to a lit" do
-    warning = Dust::Warnings::RescueValue.new(nil, [:lit, 4])
+    warning = Nitpick::Warnings::RescueValue.new(nil, [:lit, 4])
     warning.matches?.should be_true
   end
   
@@ -21,7 +21,7 @@ describe Dust::Warnings::RescueValue do
               [:call, [:lit, 4], :+, [:array, [:lit, 5]]],
               [:call, [:lit, 6], :+, [:array, [:lit, 7]]]]]
               
-    warning = Dust::Warnings::RescueValue.new(*exp)
+    warning = Nitpick::Warnings::RescueValue.new(*exp)
     warning.matches?.should be_false
   end
 end

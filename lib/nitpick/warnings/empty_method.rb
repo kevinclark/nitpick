@@ -1,4 +1,4 @@
-module Dust
+module Nitpick
   module Warnings
     class EmptyMethod < SimpleWarning
       attr_reader :body

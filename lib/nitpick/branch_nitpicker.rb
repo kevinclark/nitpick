@@ -1,5 +1,5 @@
-module Dust
-  class BranchDuster < Duster
+module Nitpick
+  class BranchNitpicker < Nitpicker
     def process_if(exp)
       cond = process(exp.shift)
       yes_branch = process(exp.shift)

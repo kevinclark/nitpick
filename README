@@ -1,9 +1,9 @@
 Ruby lint. Sorta.
 
-http://github.com/kevinclark/dust/wikis
+http://github.com/kevinclark/nitpick/wikis
 
 
-Clio:dust kev$ ./bin/dust spec/fixtures/block_badness.rb \
+Clio:nitpick kev$ ./bin/nitpick spec/fixtures/block_badness.rb \
 >     spec/fixtures/branch_badness.rb \
 >     spec/fixtures/method_badness.rb \
 >     spec/fixtures/rescue_badness.rb \

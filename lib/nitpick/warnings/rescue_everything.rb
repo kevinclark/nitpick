@@ -1,4 +1,4 @@
-module Dust
+module Nitpick
   module Warnings
     class RescueEverything < SimpleWarning
       def initialize(*args)

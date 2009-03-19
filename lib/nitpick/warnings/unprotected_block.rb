@@ -1,4 +1,4 @@
-module Dust
+module Nitpick
   module Warnings
     class UnprotectedBlock < SimpleWarning
       attr_reader :condition, :yes_branch, :no_branch

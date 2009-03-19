@@ -3,18 +3,18 @@ require 'fixtures/branch_badness'
 
 include Fixtures
 
-describe Dust::Duster do
+describe Nitpick::Nitpicker do
   before do
-    @duster = duster = Dust::Duster.new(BranchBadness, :branch_returning_true_or_false)
+    @nitpicker = nitpicker = Nitpick::Nitpicker.new(BranchBadness, :branch_returning_true_or_false)
   end
   
   it "should discover each of the warning classes with the correct options" do
-    warnings = [Dust::Warnings::UselessBranch, Dust::Warnings::IdenticalBranch]
+    warnings = [Nitpick::Warnings::UselessBranch, Nitpick::Warnings::IdenticalBranch]
     branches = [s(:true), s(:false)]
     warnings.each do |warning|
       warning.should_receive(:discover).with(branches)
     end
     
-    @duster.scan_for warnings, :with => branches
+    @nitpicker.scan_for warnings, :with => branches
   end
 end

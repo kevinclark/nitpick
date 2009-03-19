@@ -1,5 +1,5 @@
-module Dust
-  class Duster < SexpProcessor
+module Nitpick
+  class Nitpicker < SexpProcessor
     attr_accessor :warnings
     
     def initialize(klass, meth)
@@ -14,7 +14,7 @@ module Dust
       @warnings = []
     end
     
-    def dust!
+    def nitpick!
       process(ParseTree.translate(@class, @method))
     end
     

@@ -6,10 +6,10 @@ task :default => :spec
 begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
-    gem.name = "dust"
+    gem.name = "nitpick"
     gem.summary = %Q{TODO}
     gem.email = "kevin.clark@gmail.com"
-    gem.homepage = "http://github.com/kevinclark/dust"
+    gem.homepage = "http://github.com/kevinclark/nitpick"
     gem.authors = ["Kevin Clark"]
     gem.add_dependency('trollop')
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
@@ -21,7 +21,7 @@ end
 require 'rake/rdoctask'
 Rake::RDocTask.new do |rdoc|
   rdoc.rdoc_dir = 'rdoc'
-  rdoc.title = 'dust'
+  rdoc.title = 'nitpick'
   rdoc.options << '--line-numbers' << '--inline-source'
   rdoc.rdoc_files.include('README*')
   rdoc.rdoc_files.include('lib/**/*.rb')

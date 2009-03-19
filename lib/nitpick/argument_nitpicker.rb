@@ -1,6 +1,6 @@
-module Dust
-  class ArgumentDuster < LocalVariableCounter
-    def dust!
+module Nitpick
+  class ArgumentNitpicker < LocalVariableCounter
+    def nitpick!
       @silence_warnings = false
       super
       return if @silence_warnings

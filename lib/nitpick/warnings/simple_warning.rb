@@ -1,4 +1,4 @@
-module Dust
+module Nitpick
   module Warnings
     class SimpleWarning
       def self.discover(args = [])

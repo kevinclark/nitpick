@@ -3,22 +3,22 @@ require 'fixtures/branch_badness'
 
 include Fixtures
 
-describe Dust::BranchDuster do
+describe Nitpick::BranchNitpicker do
   it "should warn for a branch simply returning true and false" do
-    duster = Dust::BranchDuster.new(BranchBadness, :branch_returning_true_or_false)
-    duster.dust!
-    duster.warnings.should == [Dust::Warnings::UselessBranch.new]
+    nitpicker = Nitpick::BranchNitpicker.new(BranchBadness, :branch_returning_true_or_false)
+    nitpicker.nitpick!
+    nitpicker.warnings.should == [Nitpick::Warnings::UselessBranch.new]
   end
   
   it "should warn for identical branches" do
-    duster = Dust::BranchDuster.new(BranchBadness, :branch_returning_identical_things)
-    duster.dust!
-    duster.warnings.should == [Dust::Warnings::IdenticalBranch.new]
+    nitpicker = Nitpick::BranchNitpicker.new(BranchBadness, :branch_returning_identical_things)
+    nitpicker.nitpick!
+    nitpicker.warnings.should == [Nitpick::Warnings::IdenticalBranch.new]
   end
   
   it "should warn for assignments as conditions" do
-    duster = Dust::BranchDuster.new(BranchBadness, :branch_with_assignment_as_condition)
-    duster.dust!
-    duster.warnings.should == [Dust::Warnings::AssignmentAsCondition.new]
+    nitpicker = Nitpick::BranchNitpicker.new(BranchBadness, :branch_with_assignment_as_condition)
+    nitpicker.nitpick!
+    nitpicker.warnings.should == [Nitpick::Warnings::AssignmentAsCondition.new]
   end
 end

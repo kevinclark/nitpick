@@ -1,6 +1,6 @@
-module Dust
-  class LocalVariableDuster < LocalVariableCounter
-    def dust!
+module Nitpick
+  class LocalVariableNitpicker < LocalVariableCounter
+    def nitpick!
       super
       
       @lvars.each do |name, details|

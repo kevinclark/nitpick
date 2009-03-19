@@ -1,5 +1,5 @@
-module Dust
-  class RescueDuster < Duster
+module Nitpick
+  class RescueNitpicker < Nitpicker
     def process_resbody(exp)
       exceptions = exp.shift
       rescue_value = exp.shift

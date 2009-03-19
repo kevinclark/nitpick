@@ -3,23 +3,23 @@ require 'fixtures/rescue_badness'
 
 include Fixtures
 
-describe Dust::RescueDuster do
+describe Nitpick::RescueNitpicker do
   it "should create a warning for rescuing to a value" do
-    duster = Dust::RescueDuster.new(RescueBadness, :rescue_nil)
-    duster.dust!
-    duster.warnings.should == [Dust::Warnings::RescueValue.new]
+    nitpicker = Nitpick::RescueNitpicker.new(RescueBadness, :rescue_nil)
+    nitpicker.nitpick!
+    nitpicker.warnings.should == [Nitpick::Warnings::RescueValue.new]
   end
   
   it "should create a warning for rescuing Exception" do
-    duster = Dust::RescueDuster.new(RescueBadness, :rescue_exception)
-    duster.dust!
-    duster.warnings.should == [Dust::Warnings::RescueEverything.new]
+    nitpicker = Nitpick::RescueNitpicker.new(RescueBadness, :rescue_exception)
+    nitpicker.nitpick!
+    nitpicker.warnings.should == [Nitpick::Warnings::RescueEverything.new]
   end
   
   it "should create a warning for rescuing Object" do
-    duster = Dust::RescueDuster.new(RescueBadness, :rescue_object)
-    duster.dust!
-    duster.warnings.should == [Dust::Warnings::RescueEverything.new]
+    nitpicker = Nitpick::RescueNitpicker.new(RescueBadness, :rescue_object)
+    nitpicker.nitpick!
+    nitpicker.warnings.should == [Nitpick::Warnings::RescueEverything.new]
   end
    
 end

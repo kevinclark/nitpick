@@ -1,5 +1,5 @@
-module Dust
-  class LocalVariableCounter < Duster
+module Nitpick
+  class LocalVariableCounter < Nitpicker
     def initialize(klass, meth)
       super
       # uses.succ each time a local variable is referenced or assigned to
