@@ -16,6 +16,7 @@ Gem::Specification.new do |s|
   s.homepage = %q{http://github.com/kevinclark/nitpick}
   s.rdoc_options = ["--inline-source", "--charset=UTF-8"]
   s.require_paths = ["lib"]
+  s.rubyforge_project = %q{nitpick}
   s.rubygems_version = %q{1.3.1}
   s.summary = %q{A link-like static code analyzer for Ruby}
 

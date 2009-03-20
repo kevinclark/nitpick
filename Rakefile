@@ -11,6 +11,7 @@ begin
     gem.email = "kevin.clark@gmail.com"
     gem.homepage = "http://github.com/kevinclark/nitpick"
     gem.authors = ["Kevin Clark"]
+    gem.rubyforge_project = 'nitpick'
     gem.add_dependency('trollop')
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
