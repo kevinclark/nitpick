@@ -41,7 +41,7 @@ class Module
     # Except means don't match this
     return if NitpickOptions[:except].any? {|namespace| /#{namespace}/ =~ self.to_s }
     # Only means it must match one
-    return unless NitpickOptions[:only].find? {|namespace|  /#{namespace}/ =~ self.to_s } or
+    return unless NitpickOptions[:only].find {|namespace|  /#{namespace}/ =~ self.to_s } or
                     NitpickOptions[:only].empty?
     
     warnings = Nitpickers.map do |nitpicker_class|
