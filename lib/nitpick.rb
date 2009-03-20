@@ -4,6 +4,8 @@ require 'rubygems'
 require 'parse_tree'
 require 'ruby2ruby'
 
+require 'nitpick/supression'
+
 require 'nitpick/warnings/simple_warning'
 require 'nitpick/warnings/unused_variable'
 require 'nitpick/warnings/unprotected_block'

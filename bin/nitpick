@@ -13,23 +13,27 @@ opts = Trollop.options do
   banner <<-BANNER
 Nitpick is a lint-like static code analyzer for Ruby.
 
-Usage: `nitpick [(--only str | --except str)*|-h] file1.rb file2.rb`
+Usage: `nitpick [(--only str | --except str | --supp file)*|-h] file1.rb file2.rb`
 
 By default, nitpick will analyze *all* loaded code. To reduce the noise:
 
 BANNER
-  opt :only, "Nitpick only classes/modules that match this string.", :type => :string, :multi => true
-  opt :except, "Don't nitpick classes/modules that match this string.", :type => :string, :multi => true
+  opt :only,    "Nitpick only classes/modules that match this string.", :type => :string, :multi => true
+  opt :except,  "Don't nitpick classes/modules that match this string.", :type => :string, :multi => true
+  opt :supp,    "Suppress warnings based on a suppression file", :type => :io, :multi => true
 end
 
 # TODO(kevinclark) 2009-03-19: Figure out how to make this print -h
 Trollop.die "I need something to nitpick. Gimmie a filename or two. Or ten" if ARGV.size == 0
 
-NitpickOptions = { :only => opts[:only] || [], :except => opts[:except] || []}
+NitpickOptions = { :only => opts[:only] || [], :except => opts[:except] || [], :supp => opts[:supp] || [] }
+
 Nitpickers = [
   Nitpick::ArgumentNitpicker, Nitpick::BlockNitpicker, Nitpick::BranchNitpicker,
   Nitpick::LocalVariableNitpicker, Nitpick::MethodNitpicker, Nitpick::RescueNitpicker
 ]
+
+SuppressionRules = NitpickOptions[:supp].map {|supp| Nitpick::Suppression.new(supp.read) }
 
 class Module
   # So we don't set off -w
@@ -43,6 +47,8 @@ class Module
     # Only means it must match one
     return unless NitpickOptions[:only].find {|namespace|  /#{namespace}/ =~ self.to_s } or
                     NitpickOptions[:only].empty?
+    # skip if any of our rules say so
+    return if SuppressionRules.any? {|rule| rule.suppress?(self.to_s) }
     
     warnings = Nitpickers.map do |nitpicker_class|
       nitpicker = nitpicker_class.new(self, name)
