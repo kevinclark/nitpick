@@ -13,6 +13,7 @@ begin
     gem.authors = ["Kevin Clark"]
     gem.rubyforge_project = 'nitpick'
     gem.add_dependency('trollop')
+    gem.add_dependency('ParseTree', '~> 3.0.0')
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
 rescue LoadError
