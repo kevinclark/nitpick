@@ -1,3 +1,6 @@
+== 1.0.2 / 3-21-09
+ * Missing gem dependency on ParseTree [FIXED]
+
 == 1.0.1 / 3-19-09
  * Typo in runner [FIXED]
 
